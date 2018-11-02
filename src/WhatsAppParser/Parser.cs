@@ -14,7 +14,7 @@ namespace WhatsAppParser
         public Parser(string filePath)
         {
             _filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
-            _messageRegex = new Regex(@"(\d{2}/\d{2}/\d{4}, \d{2}:\d{2}) - ([^:]+)(?:: )?(.*)?", RegexOptions.CultureInvariant | RegexOptions.Compiled);
+            _messageRegex = new Regex(@"^(\d{2}/\d{2}/\d{4}, \d{2}:\d{2}) - ([^:]+)(: )?(.*)?$", RegexOptions.CultureInvariant | RegexOptions.Compiled);
         }
 
         public IEnumerable<Message> Messages()
@@ -31,7 +31,8 @@ namespace WhatsAppParser
                             yield return messageBuilder.Build();
                         }
 
-                        if (String.IsNullOrEmpty(match.Groups[3].Value)) {
+                        if (!match.Groups[3].Success) {
+                            // No ': ' after senders name.
                             // Probably some encryption message or similar. Just skip this one.
                             messageBuilder = null;
                             continue;
@@ -40,10 +41,11 @@ namespace WhatsAppParser
                         // Prepare for next message
                         var timestamp = DateTime.ParseExact(match.Groups[1].Value, "dd/MM/yyyy, HH:mm", CultureInfo.InvariantCulture);
                         messageBuilder = new MessageBuilder(timestamp, match.Groups[2].Value);
-                        messageBuilder.AppendContentLine(match.Groups[3].Value);
+                        messageBuilder.AppendContentLine(match.Groups[4].Value);
                     } else {
                         // Line appends to the existing message
-                        messageBuilder.AppendContentLine(line);
+                        // There might be the case that this line is just invalid and there is no builder from previous lines
+                        messageBuilder?.AppendContentLine(line);
                     }
                 }
 
