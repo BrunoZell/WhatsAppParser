@@ -50,8 +50,14 @@ namespace WhatsAppParser
                         messageBuilder.Append(match.Groups[3].Value);
                     } else {
                         // Line appends to the existing message
-                        messageBuilder.Append(line);
+                        messageBuilder.AppendLine(line);
                     }
+                }
+
+                if (message != null) {
+                    // Complete current message and return
+                    message.Content = messageBuilder.ToString();
+                    yield return message;
                 }
             }
         }
