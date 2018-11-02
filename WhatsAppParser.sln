@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatsAppParser", "src\WhatsAppParser\WhatsAppParser.csproj", "{D7E8B49D-14BA-49D5-B8D3-67CFD278FA4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatsAppParser", "src\WhatsAppParser\WhatsAppParser.csproj", "{D7E8B49D-14BA-49D5-B8D3-67CFD278FA4A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "globals", "globals", "{CE4B32B0-88FA-47FC-8B7B-CD01329B9C81}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ED45B222-8A4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{CE434567-2D8E-47DC-AFD9-D6073665FCAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatsAppParser.Console", "samples\WhatsAppParser.Console\WhatsAppParser.Console.csproj", "{BA4D9D80-DE30-4288-BBA5-9CF7A8ECA943}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatsAppParser.Terminal", "samples\WhatsAppParser.Console\WhatsAppParser.Terminal.csproj", "{BA4D9D80-DE30-4288-BBA5-9CF7A8ECA943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
