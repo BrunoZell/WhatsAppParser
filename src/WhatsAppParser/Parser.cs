@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace WhatsAppParser
@@ -20,45 +19,34 @@ namespace WhatsAppParser
         public IEnumerable<Message> Messages()
         {
             using (var reader = File.OpenText(_filePath)) {
-
-                Message message = null;
-                StringBuilder messageBuilder = null;
+                MessageBuilder messageBuilder = null;
 
                 while (reader.NextLine(out string line)) {
                     var match = _messageRegex.Match(line);
                     if (match.Success) {
                         // Line starts a new message
-                        if (message != null) {
+                        if (messageBuilder != null) {
                             // Complete current message and return
-                            message.Content = messageBuilder.ToString().TrimEnd('\r', '\n');
-                            yield return message;
+                            yield return messageBuilder.Build();
                         }
 
                         if (String.IsNullOrEmpty(match.Groups[3].Value)) {
                             // Probably some encryption message or similar. Just skip this one.
-                            message = null;
+                            messageBuilder = null;
                             continue;
                         }
 
                         // Prepare for next message
-                        message = new Message {
-                            Timestamp = DateTime.ParseExact(match.Groups[1].Value, @"dd/MM/yyyy, HH:mm", CultureInfo.InvariantCulture),
-                            Sender = match.Groups[2].Value
-                        };
-
-                        messageBuilder = new StringBuilder();
-                        messageBuilder.AppendLine(match.Groups[3].Value);
+                        var timestamp = DateTime.ParseExact(match.Groups[1].Value, @"dd/MM/yyyy, HH:mm", CultureInfo.InvariantCulture);
+                        messageBuilder = new MessageBuilder(timestamp, match.Groups[2].Value);
+                        messageBuilder.AppendContentLine(match.Groups[3].Value);
                     } else {
                         // Line appends to the existing message
-                        messageBuilder.AppendLine(line);
+                        messageBuilder.AppendContentLine(line);
                     }
                 }
 
-                if (message != null) {
-                    // Complete current message and return
-                    message.Content = messageBuilder.ToString().TrimEnd('\r', '\n');
-                    yield return message;
-                }
+                yield return messageBuilder.Build();
             }
         }
     }
