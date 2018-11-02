@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ED45B222-8A4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{CE434567-2D8E-47DC-AFD9-D6073665FCAA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatsAppParser.Terminal", "samples\WhatsAppParser.Console\WhatsAppParser.Terminal.csproj", "{BA4D9D80-DE30-4288-BBA5-9CF7A8ECA943}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatsAppParser.Terminal", "samples\WhatsAppParser.Terminal\WhatsAppParser.Terminal.csproj", "{BA4D9D80-DE30-4288-BBA5-9CF7A8ECA943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
