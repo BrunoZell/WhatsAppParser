@@ -30,7 +30,7 @@ namespace WhatsAppParser
                         // Line starts a new message
                         if (message != null) {
                             // Complete current message and return
-                            message.Content = messageBuilder.ToString();
+                            message.Content = messageBuilder.ToString().TrimEnd('\r', '\n');
                             yield return message;
                         }
 
@@ -47,7 +47,7 @@ namespace WhatsAppParser
                         };
 
                         messageBuilder = new StringBuilder();
-                        messageBuilder.Append(match.Groups[3].Value);
+                        messageBuilder.AppendLine(match.Groups[3].Value);
                     } else {
                         // Line appends to the existing message
                         messageBuilder.AppendLine(line);
@@ -56,7 +56,7 @@ namespace WhatsAppParser
 
                 if (message != null) {
                     // Complete current message and return
-                    message.Content = messageBuilder.ToString();
+                    message.Content = messageBuilder.ToString().TrimEnd('\r', '\n');
                     yield return message;
                 }
             }
