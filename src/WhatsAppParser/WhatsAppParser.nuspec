@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BrunoZell.WhatsAppParser</id>
+    <version>$version$</version>
+    <title>WhatsApp Chat History Parser</title>
+    <authors>Bruno Zell</authors>
+    <owners>Bruno Zell</owners>
+    <licenseUrl>https://github.com/BrunoZell/WhatsAppParser/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/BrunoZell/WhatsAppParser</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Parses exported chat histories from WhatsApp chat client.</description>
+    <copyright>Copyright 2018 Bruno Zell</copyright>
+    <tags>WhatsApp Parser Chat History</tags>
+  </metadata>
+</package>
