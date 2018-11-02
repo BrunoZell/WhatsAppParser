@@ -9,7 +9,7 @@ namespace WhatsAppParser
 {
     public class Parser
     {
-        private readonly Regex _messageRegex = new Regex(@"(\d{2}/\d{2}/\d\{4}, \d{2}:\d{2}) - ([^:]+): (.*)", RegexOptions.CultureInvariant | RegexOptions.Compiled);
+        private readonly Regex _messageRegex = new Regex(@"(\d{2}/\d{2}/\d{4}, \d{2}:\d{2}) - ([^:]+)(?:: )?(.*)?", RegexOptions.CultureInvariant | RegexOptions.Compiled);
         private readonly string _filePath;
 
         public Parser(string filePath)
@@ -28,10 +28,16 @@ namespace WhatsAppParser
                     var match = _messageRegex.Match(line);
                     if (match.Success) {
                         // Line starts a new message
-                        if (message != null && messageBuilder != null) {
+                        if (message != null) {
                             // Complete current message and return
                             message.Content = messageBuilder.ToString();
                             yield return message;
+                        }
+
+                        if (String.IsNullOrEmpty(match.Groups[3].Value)) {
+                            // Probably some encryption message or similar. Just skip this one.
+                            message = null;
+                            continue;
                         }
 
                         // Prepare for next message
