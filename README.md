@@ -1,7 +1,10 @@
 ﻿# WhatspApp chat history parser
 A light-weight C# library that parses exported chat histories from WhatsApp.
 
-``` cshrp
+[![NuGet](https://img.shields.io/nuget/v/BrunoZell.WhatsAppParser.svg)](https://www.nuget.org/packages/BrunoZell.WhatsAppParser)
+![GitHub top language](https://img.shields.io/github/languages/top/BrunoZell/WhatsAppParser.svg)
+
+``` c#
 // Create a parser from an exported chat history
 var parser = new Parser("chat.txt");
 
