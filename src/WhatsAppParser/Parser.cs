@@ -8,12 +8,13 @@ namespace WhatsAppParser
 {
     public class Parser
     {
-        private readonly Regex _messageRegex = new Regex(@"(\d{2}/\d{2}/\d{4}, \d{2}:\d{2}) - ([^:]+)(?:: )?(.*)?", RegexOptions.CultureInvariant | RegexOptions.Compiled);
         private readonly string _filePath;
+        private readonly Regex _messageRegex;
 
         public Parser(string filePath)
         {
             _filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
+            _messageRegex = new Regex(@"(\d{2}/\d{2}/\d{4}, \d{2}:\d{2}) - ([^:]+)(?:: )?(.*)?", RegexOptions.CultureInvariant | RegexOptions.Compiled);
         }
 
         public IEnumerable<Message> Messages()
@@ -37,7 +38,7 @@ namespace WhatsAppParser
                         }
 
                         // Prepare for next message
-                        var timestamp = DateTime.ParseExact(match.Groups[1].Value, @"dd/MM/yyyy, HH:mm", CultureInfo.InvariantCulture);
+                        var timestamp = DateTime.ParseExact(match.Groups[1].Value, "dd/MM/yyyy, HH:mm", CultureInfo.InvariantCulture);
                         messageBuilder = new MessageBuilder(timestamp, match.Groups[2].Value);
                         messageBuilder.AppendContentLine(match.Groups[3].Value);
                     } else {
