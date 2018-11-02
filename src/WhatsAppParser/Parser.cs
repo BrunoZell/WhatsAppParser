@@ -46,7 +46,9 @@ namespace WhatsAppParser
                     }
                 }
 
-                yield return messageBuilder.Build();
+                if (messageBuilder != null) {
+                    yield return messageBuilder.Build();
+                }
             }
         }
     }
