@@ -1,0 +1,8 @@
+﻿03/09/2013, 15:35 - Person A: Hey there!
+03/09/2013, 16:08 - Person B: Hi, I'm using WhatsApp!
+03/09/2013, 16:08 - Person A: Cool
+03/09/2013, 22:06 - Person B: U know,
+this is a multi line
+message!
+03/09/2013, 22:06 - Person A: Cool
+03/09/2013, 22:07 - Person B: Yes

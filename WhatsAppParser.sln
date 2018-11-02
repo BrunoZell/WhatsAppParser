@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "globals", "globals", "{CE4B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ED45B222-8A43-45E9-A363-15E5E957E26B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{CE434567-2D8E-47DC-AFD9-D6073665FCAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatsAppParser.Console", "samples\WhatsAppParser.Console\WhatsAppParser.Console.csproj", "{BA4D9D80-DE30-4288-BBA5-9CF7A8ECA943}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +27,17 @@ Global
 		{D7E8B49D-14BA-49D5-B8D3-67CFD278FA4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7E8B49D-14BA-49D5-B8D3-67CFD278FA4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7E8B49D-14BA-49D5-B8D3-67CFD278FA4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA4D9D80-DE30-4288-BBA5-9CF7A8ECA943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA4D9D80-DE30-4288-BBA5-9CF7A8ECA943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA4D9D80-DE30-4288-BBA5-9CF7A8ECA943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA4D9D80-DE30-4288-BBA5-9CF7A8ECA943}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D7E8B49D-14BA-49D5-B8D3-67CFD278FA4A} = {ED45B222-8A43-45E9-A363-15E5E957E26B}
+		{BA4D9D80-DE30-4288-BBA5-9CF7A8ECA943} = {CE434567-2D8E-47DC-AFD9-D6073665FCAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5AEFE3BC-4818-439E-97F4-024424159C4F}
